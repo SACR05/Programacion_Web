@@ -1,0 +1,154 @@
+!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechTrend - Tienda de Productos Tecnológicos</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
+        header { background: #2c3e50; color: white; text-align: center; padding: 2em; }
+        nav { background: #34495e; padding: 1em; }
+        nav a { color: white; margin: 0 1em; text-decoration: none; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        .products, .testimonials, .about, .subscription { margin-bottom: 2em; }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background: #f2f2f2; }
+        figure { text-align: center; }
+        canvas, svg { display: block; margin: 20px auto; border: 1px solid #ccc; }
+        form { max-width: 600px; margin: 0 auto; }
+        label, input, select, textarea { display: block; width: 100%; margin-bottom: 10px; }
+        input, select, textarea { padding: 8px; }
+        button { background: #2c3e50; color: white; padding: 10px 20px; border: none; cursor: pointer; }
+        aside { float: right; width: 30%; background: #f9f9f9; padding: 1em; margin-left: 1em; }
+        blockquote { border-left: 4px solid #2c3e50; padding-left: 1em; margin: 1em 0; }
+        footer { background: #2c3e50; color: white; text-align: center; padding: 1em; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>TechTrend</h1>
+        <p>Tu tienda de tecnología innovadora</p>
+    </header>
+    <nav>
+        <a href="#products">Productos</a>
+        <a href="#testimonials">Testimonios</a>
+        <a href="#about">Quiénes Somos</a>
+        <a href="#subscription">Suscripción</a>
+    </nav>
+    <div class="container">
+        <section id="products" class="products">
+            <h2>Nuestros Productos</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Producto</th>
+                        <th>Descripción</th>
+                        <th>Precio</th>
+                        <th>Popularidad</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><mark>Smartphone X</mark></td>
+                        <td>Teléfono de última generación con 128GB</td>
+                        <td>$799</td>
+                        <td>★★★★★</td>
+                    </tr>
+                    <tr>
+                        <td>Laptop Ultra</td>
+                        <td>Portátil ligero con procesador i7</td>
+                        <td>$1299</td>
+                        <td>★★★★☆</td>
+                    </tr>
+                    <tr>
+                        <td>Auriculares Pro</td>
+                        <td>Auriculares inalámbricos con cancelación de ruido</td>
+                        <td>$199</td>
+                        <td>★★★☆☆</td>
+                    </tr>
+                </tbody>
+            </table>
+            <article>
+                <h3>Detalles del Producto Destacado</h3>
+                <figure>
+                    <img src="https://" alt="Smartphone X">
+                    <figcaption>Smartphone X - Innovación en tus manos</figcaption>
+                </figure>
+                <p>El <abbr title="Smartphone de Última Generación">Smartphone X</abbr> ofrece un rendimiento excepcional con su procesador de 8 núcleos y cámara de 48MP. Lanzado el <time datetime="2025-01-15">15 de enero de 2025</time>.</p>
+            </article>
+            <h3>Comparación de Precios</h3>
+            <svg width="400" height="200" viewBox="0 0 400 200">
+                <rect x="50" y="100" width="80" height="100" fill="#2c3e50" />
+                <text x="90" y="190" text-anchor="middle">Smartphone X</text>
+                <text x="90" y="90" text-anchor="middle">$799</text>
+                <rect x="150" y="50" width="80" height="150" fill="#34495e" />
+                <text x="190" y="190" text-anchor="middle">Laptop Ultra</text>
+                <text x="190" y="40" text-anchor="middle">$1299</text>
+                <rect x="250" y="150" width="80" height="50" fill="#566573" />
+                <text x="290" y="190" text-anchor="middle">Auriculares</text>
+                <text x="290" y="140" text-anchor="middle">$199</text>
+            </svg>
+            <h3>Popularidad de Productos</h3>
+            <canvas id="popularityChart" width="400" height="200"></canvas>
+            <script>
+                const ctx = document.getElementById('popularityChart').getContext('2d');
+                ctx.fillStyle = '#2c3e50';
+                ctx.fillRect(50, 100, 80, 100);
+                ctx.fillText('Smartphone X', 90, 190);
+                ctx.fillText('5★', 90, 90);
+                ctx.fillStyle = '#34495e';
+                ctx.fillRect(150, 120, 80, 80);
+                ctx.fillText('Laptop Ultra', 190, 190);
+                ctx.fillText('4★', 190, 110);
+                ctx.fillStyle = '#566573';
+                ctx.fillRect(250, 140, 80, 60);
+                ctx.fillText('Auriculares', 290, 190);
+                ctx.fillText('3★', 290, 130);
+            </script>
+        </section>
+        <section id="testimonials" class="testimonials">
+            <h2>Testimonios</h2>
+            <blockquote>
+                <p>"El Smartphone X cambió mi forma de trabajar. ¡Increíble rendimiento!"</p>
+                <cite>– Ana López, <time datetime="2025-03-10">10 de marzo de 2025</time></cite>
+            </blockquote>
+            <aside>
+                <h3>Nota</h3>
+                <p>Nuestros productos han sido calificados con un promedio de 4.5 estrellas por más de 500 clientes.</p>
+            </aside>
+        </section>
+        <section id="about" class="about">
+            <h2>Quiénes Somos</h2>
+            <p>Somos TechTrend, una empresa fundada en <time datetime="2020-06-01">junio de 2020</time>, dedicada a ofrecer tecnología de punta.</p>
+            <blockquote>
+                <p>"Nuestra misión es innovar para conectar el mundo."</p>
+                <cite>– Equipo TechTrend</cite>
+            </blockquote>
+        </section>
+        <section id="subscription" class="subscription">
+            <h2>Suscríbete a Nuestro Boletín</h2>
+            <form>
+                <label for="name">Nombre:</label>
+                <input type="text" id="name" name="name" required>
+                <label for="email">Correo Electrónico:</label>
+                <input type="email" id="email" name="email" required>
+                <label for="country">País:</label>
+                <select id="country" name="country">
+                    <option value="es">España</option>
+                    <option value="mx">México</option>
+                    <option value="ar">Argentina</option>
+                </select>
+                <label for="interests">Intereses:</label>
+                <textarea id="interests" name="interests" rows="4" placeholder="Dinos qué productos te interesan"></textarea>
+                <label for="output">Confirmación:</label>
+                <output id="output">Formulario listo para enviar</output>
+                <button type="submit">Suscribirse</button>
+            </form>
+        </section>
+    </div>
+    <footer>
+        <p>&copy; <time datetime="2025">2025</time> TechTrend. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>
