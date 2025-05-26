@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediCare Supplies</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --accent-color: #28a745;
+            --background-color: #f8f9fa;
+            --text-color: #343a40;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+        }
+
+        .navbar {
+            background-color: var(--primary-color);
+        }
+
+        .navbar-brand, .nav-link {
+            color: white !important;
+        }
+
+        .navbar-brand:hover, .nav-link:hover {
+            color: #e0e0e0 !important;
+        }
+
+        .carousel-item img {
+            object-fit: cover;
+            height: 500px;
+        }
+
+        .product-card {
+            transition: transform 0.3s;
+        }
+
+        .product-card:hover {
+            transform: scale(1.05);
+        }
+
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--accent-color);
+            color: white;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            z-index: 1000;
+        }
+
+        .whatsapp-float:hover {
+            background-color: #218838;
+        }
+
+        .footer {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 40px 0;
+        }
+
+        .footer a {
+            color: #e0e0e0;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            color: white;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background-color: var(--accent-color);
+            color: white;
+            border-radius: 50%;
+            padding: 2px 8px;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#home">MediCare Supplies</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#home">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#products">Productos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">Sobre Nosotros</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contacto</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#login">Iniciar Sesión</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link position-relative" href="#cart">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="cart-count" id="cartCount">0</span>
+                        </a>
+                    </li>
+                </ul>
+                <form class="d-flex ms-3">
+                    <input class="form-control me-2" type="search" placeholder="Buscar productos" aria-label="Search" id="searchBar">
+                    <button class="btn btn-outline-light" type="submit">Buscar</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Banner Slider -->
+    <section id="home">
+        <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="https://via.placeholder.com/1200x500?text=Bienvenidos+a+MediCare+Supplies" class="d-block w-100" alt="Banner 1">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h1>Bienvenidos a MediCare Supplies</h1>
+                        <p>Descubre nuestros insumos quirúrgicos de alta calidad</p>
+                        <a href="#products" class="btn btn-primary btn-lg">Ver Productos</a>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="https://via.placeholder.com/1200x500?text=Promoción+Especial" class="d-block w-100" alt="Banner 2">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h1>Promoción Especial</h1>
+                        <p>¡Aprovecha descuentos en equipos quirúrgicos!</p>
+                        <a href="#products" class="btn btn-primary btn-lg">Comprar Ahora</a>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-4">Sobre Nosotros</h2>
+            <p class="text-center">MediCare Supplies es líder en la distribución de insumos quirúrgicos de alta calidad desde 2010. Nuestra misión es proporcionar herramientas confiables a profesionales de la salud, garantizando seguridad y eficiencia en cada procedimiento.</p>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-4">Testimonios de Clientes</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <p class="card-text">"Productos de excelente calidad y un servicio al cliente impecable."</p>
+                            <p class="card-subtitle text-muted">- Dr. Juan Pérez</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <p class="card-text">"Rápida entrega y productos confiables. ¡Altamente recomendado!"</p>
+                            <p class="card-subtitle text-muted">- Dra. María López</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <p class="card-text">"El mejor proveedor de insumos quirúrgicos en el mercado."</p>
+                            <p class="card-subtitle text-muted">- Clínica Salud Total</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-4">Nuestros Productos</h2>
+            <div class="mb-4">
+                <label for="categoryFilter" class="form-label">Filtrar por categoría:</label>
+                <select id="categoryFilter" class="form-select w-auto d-inline-block">
+                    <option value="all">Todos</option>
+                    <option value="surgical">Instrumentos Quirúrgicos</option>
+                    <option value="disposable">Desechables</option>
+                    <option value="equipment">Equipos Médicos</option>
+                </select>
+            </div>
+            <div class="row" id="productList">
+                <div class="col-md-4 mb-4 product-card" data-category="surgical">
+                    <div class="card">
+                        <img src="https://via.placeholder.com/300x200?text=Bisturí" class="card-img-top" alt="Bisturí">
+                        <div class="card-body">
+                            <h5 class="card-title">Bisturí Quirúrgico</h5>
+                            <p class="card-text">Bisturí de acero inoxidable de alta precisión.</p>
+                            <a href="#product1" class="btn btn-outline-primary">Ver Detalles</a>
+                            <button class="btn btn-primary add-to-cart" data-product="Bisturí Quirúrgico" data-price="50">Añadir al Carrito</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4 product-card" data-category="disposable">
+                    <div class="card">
+                        <img src="https://via.placeholder.com/300x200?text=Guantes" class="card-img-top" alt="Guantes">
+                        <div class="card-body">
+                            <h5 class="card-title">Guantes Desechables</h5>
+                            <p class="card-text">Guantes de látex estériles, caja de 100 unidades.</p>
+                            <a href="#product2" class="btn btn-outline-primary">Ver Detalles</a>
+                            <button class="btn btn-primary add-to-cart" data-product="Guantes Desechables" data-price="20">Añadir al Carrito</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4 product-card" data-category="equipment">
+                    <div class="card">
+                        <img src="https://via.placeholder.com/300x200?text=Monitor" class="card-img-top" alt="Monitor">
+                        <div class="card-body">
+                            <h5 class="card-title">Monitor de Signos Vitales</h5>
+                            <p class="card-text">Monitor avanzado para quirófanos.</p>
+                            <a href="#product3" class="btn btn-outline-primary">Ver Detalles</a>
+                            <button class="btn btn-primary add-to-cart" data-product="Monitor de Signos Vitales" data-price="1500">Añadir al Carrito</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Detail Modal -->
+    <div class="modal fade" id="productModal" tabindex="-1" aria-labelledby="productModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="productModalLabel">Detalles del Producto</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img src="" class="img-fluid" id="modalProductImage" alt="Producto">
+                        </div>
+                        <div class="col-md-6">
+                            <h4 id="modalProductTitle"></h4>
+                            <p id="modalProductDescription"></p>
+                            <p><strong>Precio:</strong> $<span id="modalProductPrice"></span></p>
+                            <button class="btn btn-primary add-to-cart" id="modalAddToCart">Añadir al Carrito</button>
+                            <h5 class="mt-3">Productos Relacionados</h5>
+                            <ul>
+                                <li><a href="#product1">Bisturí Quirúrgico</a></li>
+                                <li><a href="#product2">Guantes Desechables</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Section -->
+    <section id="cart" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-4">Carrito de Compras</h2>
+            <div id="cartItems" class="list-group">
+                <!-- Cart items will be added dynamically -->
+            </div>
+            <h4 class="mt-3">Total: $<span id="cartTotal">0</span></h4>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-4">Contacto</h2>
+            <form id="contactForm" class="row g-3">
+                <div class="col-md-6">
+                    <label for="name" class="form-label">Nombre</label>
+                    <input type="text" class="form-control" id="name" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="email" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="phone" class="form-label">Teléfono</label>
+                    <input type="tel" class="form-control" id="phone" pattern="[0-9]{10}" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="message" class="form-label">Mensaje</label>
+                    <textarea class="form-control" id="message" rows="4" required></textarea>
+                </div>
+                <div class="col-12">
+                    <button type="submit" class="btn btn-primary">Enviar</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Login/Register Section -->
+    <section id="login" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-4">Iniciar Sesión / Registrarse</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <h4>Iniciar Sesión</h4>
+                    <form id="loginForm" class="row g-3">
+                        <div class="col-12">
+                            <label for="loginEmail" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="loginEmail" required>
+                        </div>
+                        <div class="col-12">
+                            <label for="loginPassword" class="form-label">Contraseña</label>
+                            <input type="password" class="form-control" id="loginPassword" required>
+                        </div>
+                        <div class="col-12">
+                            <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-6">
+                    <h4>Registrarse</h4>
+                    <form id="registerForm" class="row g-3">
+                        <div class="col-12">
+                            <label for="registerName" class="form-label">Nombre</label>
+                            <input type="text" class="form-control" id="registerName" required>
+                        </div>
+                        <div class="col-12">
+                            <label for="registerEmail" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="registerEmail" required>
+                        </div>
+                        <div class="col-12">
+                            <label for="registerPassword" class="form-label">Contraseña</label>
+                            <input type="password" class="form-control" id="registerPassword" required>
+                        </div>
+                        <div class="col-12">
+                            <button type="submit" class="btn btn-primary">Registrarse</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-4">Preguntas Frecuentes</h2>
+            <div class="accordion" id="faqAccordion">
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                            ¿Cuáles son los tiempos de envío?
+                        </button>
+                    </h2>
+                    <div id="faq1" class="accordion-collapse collapse show">
+                        <div class="accordion-body">
+                            Los envíos se procesan en 1-2 días hábiles y tardan de 3 a 5 días en llegar.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                            ¿Cuáles son las políticas de devolución?
+                        </button>
+                    </h2>
+                    <div id="faq2" class="accordion-collapse collapse">
+                        <div class="accordion-body">
+                            Aceptamos devoluciones dentro de los 30 días posteriores a la compra, siempre que el producto esté sin usar.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/1234567890" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp fa-2x"></i>
+    </a>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>MediCare Supplies</h5>
+                    <p>Proveedores de insumos quirúrgicos de calidad desde 2010.</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Enlaces</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#privacy">Política de Privacidad</a></li>
+                        <li><a href="#terms">Términos de Servicio</a></li>
+                        <li><a href="#shipping">Envíos y Devoluciones</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Contacto</h5>
+                    <p><i class="fas fa-map-marker-alt"></i> Av. Principal 123, Ciudad, País</p>
+                    <p><i class="fas fa-envelope"></i> info@medicaresupplies.com</p>
+                    <div>
+                        <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook fa-2x mx-2"></i></a>
+                        <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter fa-2x mx-2"></i></a>
+                        <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram fa-2x mx-2"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-4">
+                <p>&copy; 2025 MediCare Supplies. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
+    <script>
+        // Cart functionality
+        let cart = [];
+        let total = 0;
+
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', () => {
+                const product = button.getAttribute('data-product');
+                const price = parseFloat(button.getAttribute('data-price'));
+                cart.push({ product, price });
+                total += price;
+                updateCart();
+            });
+        });
+
+        function updateCart() {
+            const cartItems = document.getElementById('cartItems');
+            const cartCount = document.getElementById('cartCount');
+            const cartTotal = document.getElementById('cartTotal');
+            cartItems.innerHTML = '';
+            cart.forEach(item => {
+                const li = document.createElement('li');
+                li.className = 'list-group-item';
+                li.textContent = `${item.product} - $${item.price}`;
+                cartItems.appendChild(li);
+            });
+            cartCount.textContent = cart.length;
+            cartTotal.textContent = total.toFixed(2);
+        }
+
+        // Product filter
+        document.getElementById('categoryFilter').addEventListener('change', (e) => {
+            const category = e.target.value;
+            const products = document.querySelectorAll('.product-card');
+            products.forEach(product => {
+                if (category === 'all' || product.getAttribute('data-category') === category) {
+                    product.style.display = 'block';
+                } else {
+                    product.style.display = 'none';
+                }
+            });
+        });
+
+        // Search bar functionality
+        document.getElementById('searchBar').addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            const products = document.querySelectorAll('.product-card');
+            products.forEach(product => {
+                const title = product.querySelector('.card-title').textContent.toLowerCase();
+                if (title.includes(searchTerm)) {
+                    product.style.display = 'block';
+                } else {
+                    product.style.display = 'none';
+                }
+            });
+        });
+
+        // Product detail modal
+        document.querySelectorAll('.btn-outline-primary').forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault();
+                const card = button.closest('.card');
+                const title = card.querySelector('.card-title').textContent;
+                const description = card.querySelector('.card-text').textContent;
+                const image = card.querySelector('.card-img-top').src;
+                const price = card.querySelector('.add-to-cart').getAttribute('data-price');
+
+                document.getElementById('modalProductTitle').textContent = title;
+                document.getElementById('modalProductDescription').textContent = description;
+                document.getElementById('modalProductImage').src = image;
+                document.getElementById('modalProductPrice').textContent = price;
+                document.getElementById('modalAddToCart').setAttribute('data-product', title);
+                document.getElementById('modalAddToCart').setAttribute('data-price', price);
+
+                const modal = new bootstrap.Modal(document.getElementById('productModal'));
+                modal.show();
+            });
+        });
+
+        // Form validation
+        document.getElementById('contactForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            if (e.target.checkValidity()) {
+                alert('Formulario enviado con éxito');
+                e.target.reset();
+            } else {
+                e.target.reportValidity();
+            }
+        });
+
+        document.getElementById('loginForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            if (e.target.checkValidity()) {
+                alert('Inicio de sesión exitoso');
+                e.target.reset();
+            } else {
+                e.target.reportValidity();
+            }
+        });
+
+        document.getElementById('registerForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            if (e.target.checkValidity()) {
+                alert('Registro exitoso');
+                e.target.reset();
+            } else {
+                e.target.reportValidity();
+            }
+        });
+    </script>
+</body>
+</html>
