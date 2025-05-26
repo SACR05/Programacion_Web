@@ -1,0 +1,1051 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechGlobal 2025 - Conferencia Internacional de Tecnología</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header y Navegación */
+        header {
+            background: linear-gradient(45deg, #1e3c72, #2a5298);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            background: rgba(255,255,255,0.1);
+        }
+
+        nav a:hover, nav a.active {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+
+        /* Secciones principales */
+        .section {
+            display: none;
+            padding: 2rem 0;
+        }
+
+        .section.active {
+            display: block;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Contenedores con texturas */
+        .textured-container {
+            background: linear-gradient(145deg, #f0f0f0, #ffffff);
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 1rem 0;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .glass-effect {
+            background: rgba(255,255,255,0.25);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.18);
+        }
+
+        /* Página de Inicio */
+        .hero {
+            text-align: center;
+            padding: 3rem 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 20px;
+            margin: 2rem 0;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .countdown {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin: 2rem 0;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .countdown-item {
+            background: rgba(255,255,255,0.1);
+            padding: 1rem;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .countdown-number {
+            font-size: 2rem;
+            font-weight: bold;
+            display: block;
+        }
+
+        /* Video */
+        video {
+            width: 100%;
+            max-width: 800px;
+            border-radius: 15px;
+            margin: 2rem 0;
+        }
+
+        /* Progress y Meter */
+        progress, meter {
+            width: 100%;
+            height: 30px;
+            margin: 1rem 0;
+            border-radius: 15px;
+        }
+
+        progress::-webkit-progress-bar {
+            background-color: #f0f0f0;
+            border-radius: 15px;
+        }
+
+        progress::-webkit-progress-value {
+            background: linear-gradient(90deg, #4CAF50, #45a049);
+            border-radius: 15px;
+        }
+
+        /* Ponentes */
+        .speakers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .speaker-card {
+            background: linear-gradient(145deg, #ffffff, #f0f0f0);
+            border-radius: 15px;
+            padding: 1.5rem;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .speaker-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .speaker-img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        blockquote {
+            font-style: italic;
+            border-left: 4px solid #667eea;
+            padding-left: 1rem;
+            margin: 1rem 0;
+            background: rgba(102, 126, 234, 0.1);
+            padding: 1rem;
+            border-radius: 0 10px 10px 0;
+        }
+
+        /* Canvas para mapa */
+        #mapCanvas {
+            border: 2px solid #667eea;
+            border-radius: 10px;
+            cursor: pointer;
+            width: 100%;
+            max-width: 600px;
+            height: 400px;
+        }
+
+        /* Formularios */
+        form {
+            background: linear-gradient(145deg, #f0f0f0, #ffffff);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: #333;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        button {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 25px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 0.5rem;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        /* Details y Summary */
+        details {
+            margin: 1rem 0;
+            background: linear-gradient(145deg, #f0f0f0, #ffffff);
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        summary {
+            padding: 1rem;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        summary:hover {
+            background: linear-gradient(45deg, #5a6fd8, #6b3d96);
+        }
+
+        details[open] summary {
+            border-radius: 10px 10px 0 0;
+        }
+
+        .details-content {
+            padding: 1.5rem;
+        }
+
+        /* Elementos destacados */
+        mark {
+            background: linear-gradient(45deg, #ffeb3b, #ffc107);
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+        }
+
+        abbr {
+            text-decoration: underline dotted #667eea;
+            cursor: help;
+        }
+
+        aside {
+            background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+            padding: 1rem;
+            border-radius: 10px;
+            margin: 1rem 0;
+            border-left: 4px solid #2196f3;
+        }
+
+        /* SVG */
+        .svg-container {
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        /* Output */
+        output {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: #e8f5e8;
+            border: 1px solid #4caf50;
+            border-radius: 5px;
+            margin-left: 1rem;
+            font-weight: bold;
+            color: #2e7d32;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .countdown {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            nav ul {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            .speakers-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1 style="text-align: center; font-size: 2.5rem;">🚀 TechGlobal 2025</h1>
+            <p style="text-align: center; font-size: 1.2rem; margin-top: 0.5rem;">Conferencia Internacional de Tecnología</p>
+            <nav>
+                <ul>
+                    <li><a href="#" onclick="showSection('home')" class="active">Inicio</a></li>
+                    <li><a href="#" onclick="showSection('speakers')">Ponentes</a></li>
+                    <li><a href="#" onclick="showSection('program')">Programa</a></li>
+                    <li><a href="#" onclick="showSection('register')">Registro</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- PÁGINA DE INICIO -->
+        <section id="home" class="section active">
+            <div class="textured-container gradient-bg hero">
+                <h1>Bienvenidos a TechGlobal 2025</h1>
+                <p style="font-size: 1.3rem; margin-bottom: 2rem;">La mayor conferencia de tecnología del año</p>
+                
+                <div class="countdown">
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="days">15</span>
+                        <span>Días</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="hours">08</span>
+                        <span>Horas</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="minutes">45</span>
+                        <span>Minutos</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="seconds">30</span>
+                        <span>Segundos</span>
+                    </div>
+                </div>
+                
+                <time datetime="2025-06-15">📅 15 de Junio, 2025 - Madrid, España</time>
+            </div>
+
+            <div class="textured-container">
+                <h2>Video Promocional</h2>
+                <video controls poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='450'%3E%3Crect width='100%25' height='100%25' fill='%23667eea'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-size='24'%3EVideo Promocional TechGlobal 2025%3C/text%3E%3C/svg%3E">
+                    <source src="#" type="video/mp4">
+                    <p>Tu navegador no soporta el elemento video.</p>
+                </video>
+            </div>
+
+            <div class="textured-container glass-effect">
+                <h3 style="color: #333; margin-bottom: 1rem;">📊 Estado de Inscripciones</h3>
+                <p><strong>Asistentes confirmados:</strong></p>
+                <progress value="850" max="1000">85%</progress>
+                <p style="text-align: center; margin-top: 0.5rem;">850 de 1000 asistentes (85%)</p>
+                
+                <p style="margin-top: 2rem;"><strong>Progreso de inscripciones por categoría:</strong></p>
+                <div style="margin: 1rem 0;">
+                    <label>Desarrolladores:</label>
+                    <meter value="450" min="0" max="500" optimum="400">450 de 500</meter>
+                </div>
+                <div style="margin: 1rem 0;">
+                    <label>Estudiantes:</label>
+                    <meter value="200" min="0" max="300" optimum="250">200 de 300</meter>
+                </div>
+                <div style="margin: 1rem 0;">
+                    <label>Empresarios:</label>
+                    <meter value="150" min="0" max="200" optimum="180">150 de 200</meter>
+                </div>
+            </div>
+
+            <aside class="textured-container">
+                <h3>💡 Información Importante</h3>
+                <p>La conferencia incluye <mark>talleres prácticos</mark>, sesiones de networking y acceso a las últimas innovaciones tecnológicas. <abbr title="Inteligencia Artificial">IA</abbr>, blockchain, computación cuántica y más.</p>
+            </aside>
+        </section>
+
+        <!-- PÁGINA DE PONENTES -->
+        <section id="speakers" class="section">
+            <div class="textured-container">
+                <h2>🎤 Ponentes Destacados</h2>
+                
+                <div class="speakers-grid">
+                    <article class="speaker-card">
+                        <figure>
+                            <div class="speaker-img">AM</div>
+                            <figcaption>
+                                <h3>Dr. Ana Martínez</h3>
+                                <p><cite>Experta en Inteligencia Artificial</cite></p>
+                            </figcaption>
+                        </figure>
+                        <blockquote>
+                            "La IA no reemplazará a los humanos, pero los humanos que usen IA reemplazarán a los que no la usen."
+                        </blockquote>
+                        <p><strong>Especialización:</strong> Machine Learning, Deep Learning, Procesamiento de Lenguaje Natural</p>
+                    </article>
+
+                    <article class="speaker-card">
+                        <figure>
+                            <div class="speaker-img">MR</div>
+                            <figcaption>
+                                <h3>Miguel Rodríguez</h3>
+                                <p><cite>Arquitecto de Sistemas Distribuidos</cite></p>
+                            </figcaption>
+                        </figure>
+                        <blockquote>
+                            "La escalabilidad no es solo sobre manejar más usuarios, sino sobre crear sistemas que evolucionen con elegancia."
+                        </blockquote>
+                        <p><strong>Especialización:</strong> Microservicios, Cloud Computing, DevOps</p>
+                    </article>
+
+                    <article class="speaker-card">
+                        <figure>
+                            <div class="speaker-img">LG</div>
+                            <figcaption>
+                                <h3>Laura García</h3>
+                                <p><cite>Líder en Ciberseguridad</cite></p>
+                            </figcaption>
+                        </figure>
+                        <blockquote>
+                            "En ciberseguridad, no se trata de si serás atacado, sino de cuándo. La preparación es clave."
+                        </blockquote>
+                        <p><strong>Especialización:</strong> Ethical Hacking, Seguridad en la Nube, Criptografía</p>
+                    </article>
+
+                    <article class="speaker-card">
+                        <figure>
+                            <div class="speaker-img">JL</div>
+                            <figcaption>
+                                <h3>Dr. Juan López</h3>
+                                <p><cite>Pionero en Computación Cuántica</cite></p>
+                            </figcaption>
+                        </figure>
+                        <blockquote>
+                            "La computación cuántica no es solo más rápida, es fundamentalmente diferente. Cambiará todo."
+                        </blockquote>
+                        <p><strong>Especialización:</strong> Algoritmos Cuánticos, Criptografía Cuántica, Física Computacional</p>
+                    </article>
+                </div>
+            </div>
+
+            <div class="textured-container">
+                <h3>📊 Distribución por Áreas de Especialización</h3>
+                <div class="svg-container">
+                    <svg width="400" height="300" viewBox="0 0 400 300">
+                        <!-- Gráfico de barras SVG -->
+                        <rect x="50" y="200" width="60" height="80" fill="#667eea" />
+                        <text x="80" y="290" text-anchor="middle" font-size="12">IA/ML</text>
+                        <text x="80" y="190" text-anchor="middle" font-size="12" fill="white">25%</text>
+                        
+                        <rect x="120" y="180" width="60" height="100" fill="#764ba2" />
+                        <text x="150" y="290" text-anchor="middle" font-size="12">Cloud</text>
+                        <text x="150" y="170" text-anchor="middle" font-size="12" fill="white">30%</text>
+                        
+                        <rect x="190" y="220" width="60" height="60" fill="#4CAF50" />
+                        <text x="220" y="290" text-anchor="middle" font-size="12">Seguridad</text>
+                        <text x="220" y="210" text-anchor="middle" font-size="12" fill="white">20%</text>
+                        
+                        <rect x="260" y="240" width="60" height="40" fill="#FF9800" />
+                        <text x="290" y="290" text-anchor="middle" font-size="12">Cuántica</text>
+                        <text x="290" y="230" text-anchor="middle" font-size="12" fill="white">15%</text>
+                        
+                        <rect x="330" y="260" width="60" height="20" fill="#F44336" />
+                        <text x="360" y="290" text-anchor="middle" font-size="12">Otros</text>
+                        <text x="360" y="250" text-anchor="middle" font-size="12" fill="white">10%</text>
+                        
+                        <!-- Título -->
+                        <text x="200" y="30" text-anchor="middle" font-size="16" font-weight="bold">Especialización de Ponentes</text>
+                    </svg>
+                </div>
+            </div>
+
+            <div class="textured-container">
+                <h3>🗺️ Ubicación del Evento</h3>
+                <p><strong>Palacio de Congresos de Madrid</strong></p>
+                <p>📍 Paseo de la Castellana, 99, 28046 Madrid, España</p>
+                <canvas id="mapCanvas" width="600" height="400"></canvas>
+                <p style="margin-top: 1rem;"><em>Haz clic en el mapa para ver detalles de ubicación</em></p>
+            </div>
+        </section>
+
+        <!-- PROGRAMA DEL EVENTO -->
+        <section id="program" class="section">
+            <div class="textured-container">
+                <h2>📅 Programa del Evento</h2>
+                
+                <details>
+                    <summary>🌅 Día 1 - <time datetime="2025-06-15">15 de Junio</time> - Inauguración y IA</summary>
+                    <div class="details-content">
+                        <h4>Agenda del Día 1:</h4>
+                        <ul style="margin: 1rem 0; padding-left: 2rem;">
+                            <li><time datetime="09:00">09:00 - 09:30</time> - Registro y bienvenida</li>
+                            <li><time datetime="09:30">09:30 - 10:30</time> - Conferencia inaugural: "El Futuro de la IA"</li>
+                            <li><time datetime="10:30">10:30 - 11:00</time> - Pausa para networking</li>
+                            <li><time datetime="11:00">11:00 - 12:30</time> - Taller: "Desarrollo con Machine Learning"</li>
+                            <li><time datetime="12:30">12:30 - 14:00</time> - Almuerzo</li>
+                            <li><time datetime="14:00">14:00 - 15:30</time> - Panel: "Ética en IA"</li>
+                            <li><time datetime="15:30">15:30 - 17:00</time> - Sesiones paralelas</li>
+                        </ul>
+                        <button onclick="registerActivity('day1')">Inscribirse a Actividades del Día 1</button>
+                        <progress value="120" max="200" style="margin-left: 1rem;">120/200 inscritos</progress>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>☁️ Día 2 - <time datetime="2025-06-16">16 de Junio</time> - Cloud y DevOps</summary>
+                    <div class="details-content">
+                        <h4>Agenda del Día 2:</h4>
+                        <ul style="margin: 1rem 0; padding-left: 2rem;">
+                            <li><time datetime="09:00">09:00 - 10:30</time> - "Arquitecturas Cloud Nativas"</li>
+                            <li><time datetime="10:30">10:30 - 11:00</time> - Pausa</li>
+                            <li><time datetime="11:00">11:00 - 12:30</time> - "DevOps: Automatización Total"</li>
+                            <li><time datetime="12:30">12:30 - 14:00</time> - Almuerzo</li>
+                            <li><time datetime="14:00">14:00 - 15:30</time> - Taller práctico: "Kubernetes"</li>
+                            <li><time datetime="15:30">15:30 - 17:00</time> - "Monitoring y Observabilidad"</li>
+                        </ul>
+                        <button onclick="registerActivity('day2')">Inscribirse a Actividades del Día 2</button>
+                        <progress value="95" max="150" style="margin-left: 1rem;">95/150 inscritos</progress>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>🔒 Día 3 - <time datetime="2025-06-17">17 de Junio</time> - Ciberseguridad</summary>
+                    <div class="details-content">
+                        <h4>Agenda del Día 3:</h4>
+                        <ul style="margin: 1rem 0; padding-left: 2rem;">
+                            <li><time datetime="09:00">09:00 - 10:30</time> - "Amenazas Emergentes en 2025"</li>
+                            <li><time datetime="10:30">10:30 - 11:00</time> - Pausa</li>
+                            <li><time datetime="11:00">11:00 - 12:30</time> - "Ethical Hacking Workshop"</li>
+                            <li><time datetime="12:30">12:30 - 14:00</time> - Almuerzo</li>
+                            <li><time datetime="14:00">14:00 - 15:30</time> - "Zero Trust Architecture"</li>
+                            <li><time datetime="15:30">15:30 - 17:00</time> - Mesa redonda y clausura</li>
+                        </ul>
+                        <button onclick="registerActivity('day3')">Inscribirse a Actividades del Día 3</button>
+                        <progress value="80" max="120" style="margin-left: 1rem;">80/120 inscritos</progress>
+                    </div>
+                </details>
+            </div>
+
+            <div class="textured-container">
+                <h3>📝 Inscripción a Actividades Específicas</h3>
+                <form id="activityForm">
+                    <div class="form-group">
+                        <label for="activity">Selecciona la actividad:</label>
+                        <select id="activity" name="activity" required>
+                            <option value="">-- Selecciona una actividad --</option>
+                            <option value="ml-workshop">Taller de Machine Learning</option>
+                            <option value="kubernetes-lab">Laboratorio de Kubernetes</option>
+                            <option value="ethical-hacking">Workshop de Ethical Hacking</option>
+                            <option value="ai-panel">Panel de Ética en IA</option>
+                            <option value="quantum-intro">Introducción a Computación Cuántica</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="participant-name">Nombre completo:</label>
+                        <input type="text" id="participant-name" name="participant-name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="experience-level">Nivel de experiencia:</label>
+                        <select id="experience-level" name="experience-level" required>
+                            <option value="">-- Selecciona tu nivel --</option>
+                            <option value="beginner">Principiante</option>
+                            <option value="intermediate">Intermedio</option>
+                            <option value="advanced">Avanzado</option>
+                            <option value="expert">Experto</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="expectations">¿Qué esperas aprender?</label>
+                        <textarea id="expectations" name="expectations" rows="4" placeholder="Describe tus expectativas para la actividad..."></textarea>
+                    </div>
+
+                    <button type="submit">Inscribirse a Actividad</button>
+                    <button type="reset">Limpiar Formulario</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- PÁGINA DE REGISTRO -->
+        <section id="register" class="section">
+            <div class="textured-container">
+                <h2>📋 Registro de Asistentes</h2>
+                <p>Completa el formulario para asegurar tu lugar en <mark>TechGlobal 2025</mark></p>
+                
+                <form id="registrationForm">
+                    <div class="form-group">
+                        <label for="full-name">Nombre completo <mark>*</mark>:</label>
+                        <input type="text" id="full-name" name="full-name" required 
+                               placeholder="Ingresa tu nombre completo">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Correo electrónico <mark>*</mark>:</label>
+                        <input type="email" id="email" name="email" required 
+                               placeholder="tu@email.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Teléfono:</label>
+                        <input type="tel" id="phone" name="phone" 
+                               placeholder="+34 600 123 456">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="company">Empresa/Organización:</label>
+                        <input type="text" id="company" name="company" list="companies"
+                               placeholder="Nombre de tu empresa">
+                        <datalist id="companies">
+                            <option value="Google">
+                            <option value="Microsoft">
+                            <option value="Amazon">
+                            <option value="Apple">
+                            <option value="Meta">
+                            <option value="IBM">
+                            <option value="Oracle">
+                            <option value="Salesforce">
+                            <option value="Adobe">
+                            <option value="Netflix">
+                        </datalist>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="position">Cargo/Posición:</label>
+                        <input type="text" id="position" name="position" 
+                               placeholder="Ej: Desarrollador Senior, CTO, Estudiante">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="category">Categoría de asistente <mark>*</mark>:</label>
+                        <select id="category" name="category" required onchange="updatePrice()">
+                            <option value="">-- Selecciona tu categoría --</option>
+                            <option value="student">Estudiante - €99</option>
+                            <option value="professional">Profesional - €299</option>
+                            <option value="enterprise">Empresarial - €499</option>
+                            <option value="speaker">Ponente - Gratuito</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="experience">Años de experiencia en tecnología:</label>
+                        <input type="range" id="experience" name="experience" min="0" max="30" value="5" 
+                               oninput="updateExperienceOutput()">
+                        <output for="experience" id="experience-output">5 años</output>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="interests">Áreas de interés (selecciona todas las que apliquen):</label>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.5rem; margin: 1rem 0;">
+                            <label style="display: flex; align-items: center; font-weight: normal;">
+                                <input type="checkbox" name="interests" value="ai" style="width: auto; margin-right: 0.5rem;">
+                                <abbr title="Inteligencia Artificial">IA</abbr> y Machine Learning
+                            </label>
+                            <label style="display: flex; align-items: center; font-weight: normal;">
+                                <input type="checkbox" name="interests" value="cloud" style="width: auto; margin-right: 0.5rem;">
+                                Cloud Computing
+                            </label>
+                            <label style="display: flex; align-items: center; font-weight: normal;">
+                                <input type="checkbox" name="interests" value="security" style="width: auto; margin-right: 0.5rem;">
+                                Ciberseguridad
+                            </label>
+                            <label style="display: flex; align-items: center; font-weight: normal;">
+                                <input type="checkbox" name="interests" value="quantum" style="width: auto; margin-right: 0.5rem;">
+                                Computación Cuántica
+                            </label>
+                            <label style="display: flex; align-items: center; font-weight: normal;">
+                                <input type="checkbox" name="interests" value="blockchain" style="width: auto; margin-right: 0.5rem;">
+                                Blockchain
+                            </label>
+                            <label style="display: flex; align-items: center; font-weight: normal;">
+                                <input type="checkbox" name="interests" value="iot" style="width: auto; margin-right: 0.5rem;">
+                                <abbr title="Internet of Things">IoT</abbr>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="dietary">Restricciones dietéticas:</label>
+                        <select id="dietary" name="dietary">
+                            <option value="">Ninguna</option>
+                            <option value="vegetarian">Vegetariano</option>
+                            <option value="vegan">Vegano</option>
+                            <option value="gluten-free">Sin gluten</option>
+                            <option value="halal">Halal</option>
+                            <option value="kosher">Kosher</option>
+                            <option value="other">Otro (especificar en comentarios)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="accommodation">¿Necesitas ayuda con alojamiento?</label>
+                        <select id="accommodation" name="accommodation">
+                            <option value="no">No, tengo alojamiento</option>
+                            <option value="recommendations">Sí, necesito recomendaciones</option>
+                            <option value="booking">Sí, ayuda con reservas</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="comments">Comentarios adicionales:</label>
+                        <textarea id="comments" name="comments" rows="4" 
+                                  placeholder="¿Algo más que quieras compartir? Preguntas, necesidades especiales, etc."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label style="display: flex; align-items: center; font-weight: normal;">
+                            <input type="checkbox" id="newsletter" name="newsletter" style="width: auto; margin-right: 0.5rem;">
+                            Suscribirme al newsletter de <mark>TechGlobal</mark> para recibir actualizaciones
+                        </label>
+                    </div>
+
+                    <div class="form-group">
+                        <label style="display: flex; align-items: center; font-weight: normal;">
+                            <input type="checkbox" id="terms" name="terms" required style="width: auto; margin-right: 0.5rem;">
+                            Acepto los <a href="#" style="color: #667eea;">términos y condiciones</a> <mark>*</mark>
+                        </label>
+                    </div>
+
+                    <div style="background: linear-gradient(135deg, #e8f5e8, #c8e6c9); padding: 1rem; border-radius: 10px; margin: 1rem 0;">
+                        <h4>📊 Resumen de Registro:</h4>
+                        <p><strong>Precio total:</strong> <output id="price-output">€0</output></p>
+                        <p><strong>Categoría:</strong> <output id="category-output">No seleccionada</output></p>
+                        <p><strong>Incluye:</strong> Acceso a todas las sesiones, materiales, almuerzo y coffee breaks</p>
+                    </div>
+
+                    <button type="submit">🎫 Completar Registro</button>
+                    <button type="reset">🔄 Limpiar Formulario</button>
+                </form>
+            </div>
+
+            <aside class="textured-container">
+                <h3>ℹ️ Información Importante</h3>
+                <p><abbr title="Precio válido hasta 30 días antes del evento">Precio de early bird</abbr> disponible hasta el 15 de mayo.</p>
+                <p>Los estudiantes deben presentar identificación válida al momento del registro.</p>
+                <p><mark>Lugares limitados</mark> - Solo quedan 150 espacios disponibles.</p>
+                <p>Para consultas específicas, contacta a: <a href="mailto:info@techglobal2025.com">info@techglobal2025.com</a></p>
+            </aside>
+        </section>
+    </div>
+
+    <script>
+        // Variables globales
+        let countdownInterval;
+        let registrationData = {};
+
+        // Función para mostrar secciones
+        function showSection(sectionId) {
+            // Ocultar todas las secciones
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => section.classList.remove('active'));
+
+            // Mostrar la sección seleccionada
+            document.getElementById(sectionId).classList.add('active');
+
+            // Actualizar navegación activa
+            const navLinks = document.querySelectorAll('nav a');
+            navLinks.forEach(link => link.classList.remove('active'));
+            event.target.classList.add('active');
+
+            // Inicializar canvas si es la sección de ponentes
+            if (sectionId === 'speakers') {
+                initializeMap();
+            }
+        }
+
+        // Cuenta regresiva
+        function startCountdown() {
+            const eventDate = new Date('2025-06-15T09:00:00').getTime();
+            
+            countdownInterval = setInterval(function() {
+                const now = new Date().getTime();
+                const distance = eventDate - now;
+
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                document.getElementById('days').textContent = days.toString().padStart(2, '0');
+                document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+                document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+                document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+
+                if (distance < 0) {
+                    clearInterval(countdownInterval);
+                    document.querySelector('.countdown').innerHTML = '<h2>¡El evento ha comenzado!</h2>';
+                }
+            }, 1000);
+        }
+
+        // Inicializar mapa interactivo
+        function initializeMap() {
+            const canvas = document.getElementById('mapCanvas');
+            if (!canvas) return;
+            
+            const ctx = canvas.getContext('2d');
+            
+            // Limpiar canvas
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            // Dibujar mapa base
+            ctx.fillStyle = '#e8f4f8';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            // Dibujar calles principales
+            ctx.strokeStyle = '#ccc';
+            ctx.lineWidth = 3;
+            ctx.beginPath();
+            ctx.moveTo(0, 200);
+            ctx.lineTo(canvas.width, 200);
+            ctx.moveTo(200, 0);
+            ctx.lineTo(200, canvas.height);
+            ctx.moveTo(400, 0);
+            ctx.lineTo(400, canvas.height);
+            ctx.stroke();
+            
+            // Dibujar ubicación del evento
+            ctx.fillStyle = '#667eea';
+            ctx.beginPath();
+            ctx.arc(300, 150, 30, 0, 2 * Math.PI);
+            ctx.fill();
+            
+            // Texto de ubicación
+            ctx.fillStyle = 'white';
+            ctx.font = 'bold 12px Arial';
+            ctx.textAlign = 'center';
+            ctx.fillText('🏢', 300, 155);
+            
+            // Etiqueta
+            ctx.fillStyle = '#333';
+            ctx.font = '14px Arial';
+            ctx.fillText('Palacio de Congresos', 300, 120);
+            ctx.fillText('Madrid', 300, 190);
+            
+            // Añadir interactividad
+            canvas.onclick = function(e) {
+                const rect = canvas.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                // Verificar si se hizo clic en el marcador
+                const distance = Math.sqrt(Math.pow(x - 300, 2) + Math.pow(y - 150, 2));
+                if (distance <= 30) {
+                    alert('📍 Palacio de Congresos de Madrid\n🚇 Metro: Santiago Bernabéu (L10)\n🚌 Autobuses: 14, 27, 40, 147, 150\n🚗 Parking disponible en el recinto');
+                }
+            };
+            
+            canvas.style.cursor = 'pointer';
+        }
+
+        // Registro a actividades
+        function registerActivity(day) {
+            const activities = {
+                'day1': 'Día 1 - IA y Machine Learning',
+                'day2': 'Día 2 - Cloud y DevOps', 
+                'day3': 'Día 3 - Ciberseguridad'
+            };
+            
+            alert(`✅ Te has inscrito exitosamente a las actividades del ${activities[day]}\n\nRecibirás un email de confirmación con los detalles.`);
+            
+            // Simular actualización de progreso
+            const progressBars = document.querySelectorAll('progress');
+            progressBars.forEach(bar => {
+                if (bar.value < bar.max) {
+                    bar.value += 1;
+                }
+            });
+        }
+
+        // Actualizar precio según categoría
+        function updatePrice() {
+            const category = document.getElementById('category').value;
+            const priceOutput = document.getElementById('price-output');
+            const categoryOutput = document.getElementById('category-output');
+            
+            const prices = {
+                'student': { price: '€99', name: 'Estudiante' },
+                'professional': { price: '€299', name: 'Profesional' },
+                'enterprise': { price: '€499', name: 'Empresarial' },
+                'speaker': { price: 'Gratuito', name: 'Ponente' }
+            };
+            
+            if (prices[category]) {
+                priceOutput.textContent = prices[category].price;
+                categoryOutput.textContent = prices[category].name;
+            } else {
+                priceOutput.textContent = '€0';
+                categoryOutput.textContent = 'No seleccionada';
+            }
+        }
+
+        // Actualizar output de experiencia
+        function updateExperienceOutput() {
+            const experience = document.getElementById('experience').value;
+            const output = document.getElementById('experience-output');
+            output.textContent = `${experience} años`;
+        }
+
+        // Manejar envío de formulario de actividades
+        document.getElementById('activityForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(e.target);
+            const data = Object.fromEntries(formData.entries());
+            
+            alert(`✅ Inscripción exitosa!\n\nActividad: ${data.activity}\nParticipante: ${data['participant-name']}\nNivel: ${data['experience-level']}\n\nRecibirás un email de confirmación.`);
+            
+            e.target.reset();
+        });
+
+        // Manejar envío de formulario de registro
+        document.getElementById('registrationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(e.target);
+            registrationData = Object.fromEntries(formData.entries());
+            
+            // Obtener intereses seleccionados
+            const interests = [];
+            document.querySelectorAll('input[name="interests"]:checked').forEach(checkbox => {
+                interests.push(checkbox.value);
+            });
+            registrationData.interests = interests;
+            
+            // Mostrar confirmación
+            const category = document.getElementById('category').selectedOptions[0].textContent;
+            const price = document.getElementById('price-output').textContent;
+            
+            alert(`🎉 ¡Registro completado exitosamente!\n\nNombre: ${registrationData['full-name']}\nEmail: ${registrationData.email}\nCategoría: ${category}\nPrecio: ${price}\n\nRecibirás un email de confirmación con todos los detalles y el enlace de pago.`);
+            
+            // Limpiar formulario
+            e.target.reset();
+            updatePrice();
+            updateExperienceOutput();
+        });
+
+        // Inicializar página
+        document.addEventListener('DOMContentLoaded', function() {
+            startCountdown();
+            updateExperienceOutput();
+            
+            // Simular carga de datos en tiempo real
+            setTimeout(() => {
+                const meters = document.querySelectorAll('meter');
+                meters.forEach(meter => {
+                    const currentValue = parseInt(meter.value);
+                    const newValue = Math.min(currentValue + Math.floor(Math.random() * 10), meter.max);
+                    meter.value = newValue;
+                });
+            }, 3000);
+        });
+
+        // Efectos adicionales
+        document.querySelectorAll('button').forEach(button => {
+            button.addEventListener('click', function(e) {
+                // Efecto de ondas al hacer clic
+                const ripple = document.createElement('span');
+                ripple.style.position = 'absolute';
+                ripple.style.borderRadius = '50%';
+                ripple.style.background = 'rgba(255,255,255,0.6)';
+                ripple.style.transform = 'scale(0)';
+                ripple.style.animation = 'ripple 0.6s linear';
+                ripple.style.left = (e.clientX - e.target.offsetLeft - 10) + 'px';
+                ripple.style.top = (e.clientY - e.target.offsetTop - 10) + 'px';
+                ripple.style.width = ripple.style.height = '20px';
+                
+                e.target.style.position = 'relative';
+                e.target.appendChild(ripple);
+                
+                setTimeout(() => {
+                    ripple.remove();
+                }, 600);
+            });
+        });
+
+        // Agregar animación CSS para el efecto ripple
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes ripple {
+                to {
+                    transform: scale(4);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
